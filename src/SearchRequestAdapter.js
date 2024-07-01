@@ -394,17 +394,13 @@ export class SearchRequestAdapter {
     const adaptedCollectionName = this._adaptIndexName(indexName);
 
     // Convert all common parameters to snake case
-    const snakeCasedAdditionalSearchParameters = {};
-    for (const [key, value] of Object.entries(this.additionalSearchParameters)) {
-      snakeCasedAdditionalSearchParameters[this._camelToSnakeCase(key)] = value;
-    }
-
-    // Override, collection specific parameters
-    if (this.collectionSpecificSearchParameters[adaptedCollectionName]) {
-      for (const [key, value] of Object.entries(this.collectionSpecificSearchParameters[adaptedCollectionName])) {
-        snakeCasedAdditionalSearchParameters[this._camelToSnakeCase(key)] = value;
-      }
-    }
+    const snakeCasedAdditionalSearchParameters = Object.entries({
+      ...this.additionalSearchParameters,
+      ...(this.collectionSpecificSearchParameters[adaptedCollectionName] || {}),
+    }).reduce((result, [key, value]) => {
+      result[this._camelToSnakeCase(key)] = Array.isArray(value) ? value.join(",") : value;
+      return result;
+    }, {});
 
     const typesenseSearchParams = Object.assign({}, snakeCasedAdditionalSearchParameters);
 
@@ -413,7 +409,6 @@ export class SearchRequestAdapter {
     Object.assign(typesenseSearchParams, {
       collection: adaptedCollectionName,
       q: params.query === "" || params.query === undefined ? "*" : params.query,
-      query_by: snakeCasedAdditionalSearchParameters.query_by,
       facet_by:
         snakeCasedAdditionalSearchParameters.facet_by || this._adaptFacetBy(params.facets, adaptedCollectionName),
       filter_by: this._adaptFilters(params, adaptedCollectionName) || snakeCasedAdditionalSearchParameters.filter_by,
@@ -437,7 +432,7 @@ export class SearchRequestAdapter {
     }
 
     // Allow for conditional disabling of overrides, for particular sort orders
-    let sortByOption =
+    const sortByOption =
       this.configuration.collectionSpecificSortByOptions?.[adaptedCollectionName]?.[typesenseSearchParams["sort_by"]] ||
       this.configuration.sortByOptions?.[typesenseSearchParams["sort_by"]];
     if (sortByOption?.["enable_overrides"] != null) {

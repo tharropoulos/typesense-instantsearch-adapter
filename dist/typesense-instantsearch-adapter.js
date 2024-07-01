@@ -187,11 +187,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
 /* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -201,16 +203,18 @@ __webpack_require__.r(__webpack_exports__);
 
 var _excluded = ["q", "conversation", "conversation_id", "conversation_model_id"];
 
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 var SearchRequestAdapter = /*#__PURE__*/function () {
   function SearchRequestAdapter(instantsearchRequests, typesenseClient, configuration) {
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_3__["default"])(this, SearchRequestAdapter);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4__["default"])(this, SearchRequestAdapter);
     this.instantsearchRequests = instantsearchRequests;
     this.typesenseClient = typesenseClient;
     this.configuration = configuration;
     this.additionalSearchParameters = configuration.additionalSearchParameters;
     this.collectionSpecificSearchParameters = configuration.collectionSpecificSearchParameters;
   }
-  return (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_4__["default"])(SearchRequestAdapter, [{
+  return (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(SearchRequestAdapter, [{
     key: "_shouldUseExactMatchForField",
     value: function _shouldUseExactMatchForField(fieldName, collectionName) {
       var _this$configuration$c, _this$configuration$f;
@@ -289,7 +293,7 @@ var SearchRequestAdapter = /*#__PURE__*/function () {
               }
               return result;
             }, [[], []]),
-            _fieldValues$reduce2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_fieldValues$reduce, 2),
+            _fieldValues$reduce2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_fieldValues$reduce, 2),
             excludedFieldValues = _fieldValues$reduce2[0],
             includedFieldValues = _fieldValues$reduce2[1];
           var typesenseFilterStringComponents = [];
@@ -469,7 +473,7 @@ var SearchRequestAdapter = /*#__PURE__*/function () {
         if (numericFilterMatches != null) {
           // If no matches are found or if the above didn't trigger, fall back to the default regex
           var _numericFilterMatches = numericFilterMatches;
-          var _numericFilterMatches2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_numericFilterMatches, 4);
+          var _numericFilterMatches2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_numericFilterMatches, 4);
           fieldName = _numericFilterMatches2[1];
           operator = _numericFilterMatches2[2];
           fieldValue = _numericFilterMatches2[3];
@@ -493,7 +497,7 @@ var SearchRequestAdapter = /*#__PURE__*/function () {
         console.error("[Typesense-Instantsearch-Adapter] Parsing failed for a numeric filter `".concat(numericFilter, "` with the Regex `").concat(filterStringMatchingRegex, "`. If you have field names with special characters, be sure to add them to a parameter called `facetableFieldsWithSpecialCharacters` when instantiating the adapter."));
       } else {
         var _numericFilterMatches3 = numericFilterMatches;
-        var _numericFilterMatches4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_numericFilterMatches3, 4);
+        var _numericFilterMatches4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_numericFilterMatches3, 4);
         fieldName = _numericFilterMatches4[1];
         operator = _numericFilterMatches4[2];
         fieldValue = _numericFilterMatches4[3];
@@ -516,14 +520,14 @@ var SearchRequestAdapter = /*#__PURE__*/function () {
         var x1, y1, x2, y2;
         if (Array.isArray(insideBoundingBox)) {
           var _insideBoundingBox$fl = insideBoundingBox.flat();
-          var _insideBoundingBox$fl2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_insideBoundingBox$fl, 4);
+          var _insideBoundingBox$fl2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_insideBoundingBox$fl, 4);
           x1 = _insideBoundingBox$fl2[0];
           y1 = _insideBoundingBox$fl2[1];
           x2 = _insideBoundingBox$fl2[2];
           y2 = _insideBoundingBox$fl2[3];
         } else {
           var _insideBoundingBox$sp = insideBoundingBox.split(",");
-          var _insideBoundingBox$sp2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_insideBoundingBox$sp, 4);
+          var _insideBoundingBox$sp2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_insideBoundingBox$sp, 4);
           x1 = _insideBoundingBox$sp2[0];
           y1 = _insideBoundingBox$sp2[1];
           x2 = _insideBoundingBox$sp2[2];
@@ -591,35 +595,26 @@ var SearchRequestAdapter = /*#__PURE__*/function () {
   }, {
     key: "_buildSearchParameters",
     value: function _buildSearchParameters(instantsearchRequest) {
-      var _this$configuration$c2, _this$configuration$s;
+      var _this4 = this,
+        _this$configuration$c2,
+        _this$configuration$s;
       var params = instantsearchRequest.params;
       var indexName = instantsearchRequest.indexName;
       var adaptedCollectionName = this._adaptIndexName(indexName);
 
       // Convert all common parameters to snake case
-      var snakeCasedAdditionalSearchParameters = {};
-      for (var _i = 0, _Object$entries = Object.entries(this.additionalSearchParameters); _i < _Object$entries.length; _i++) {
-        var _Object$entries$_i = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_Object$entries[_i], 2),
-          key = _Object$entries$_i[0],
-          value = _Object$entries$_i[1];
-        snakeCasedAdditionalSearchParameters[this._camelToSnakeCase(key)] = value;
-      }
-
-      // Override, collection specific parameters
-      if (this.collectionSpecificSearchParameters[adaptedCollectionName]) {
-        for (var _i2 = 0, _Object$entries2 = Object.entries(this.collectionSpecificSearchParameters[adaptedCollectionName]); _i2 < _Object$entries2.length; _i2++) {
-          var _Object$entries2$_i = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_Object$entries2[_i2], 2),
-            _key = _Object$entries2$_i[0],
-            _value = _Object$entries2$_i[1];
-          snakeCasedAdditionalSearchParameters[this._camelToSnakeCase(_key)] = _value;
-        }
-      }
+      var snakeCasedAdditionalSearchParameters = Object.entries(_objectSpread(_objectSpread({}, this.additionalSearchParameters), this.collectionSpecificSearchParameters[adaptedCollectionName] || {})).reduce(function (result, _ref2) {
+        var _ref3 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_ref2, 2),
+          key = _ref3[0],
+          value = _ref3[1];
+        result[_this4._camelToSnakeCase(key)] = Array.isArray(value) ? value.join(",") : value;
+        return result;
+      }, {});
       var typesenseSearchParams = Object.assign({}, snakeCasedAdditionalSearchParameters);
       var adaptedSortBy = this._adaptSortBy(indexName);
       Object.assign(typesenseSearchParams, {
         collection: adaptedCollectionName,
         q: params.query === "" || params.query === undefined ? "*" : params.query,
-        query_by: snakeCasedAdditionalSearchParameters.query_by,
         facet_by: snakeCasedAdditionalSearchParameters.facet_by || this._adaptFacetBy(params.facets, adaptedCollectionName),
         filter_by: this._adaptFilters(params, adaptedCollectionName) || snakeCasedAdditionalSearchParameters.filter_by,
         sort_by: adaptedSortBy || snakeCasedAdditionalSearchParameters.sort_by,
@@ -650,10 +645,10 @@ var SearchRequestAdapter = /*#__PURE__*/function () {
 
       // Filter out empty or null values, so we don't accidentally override values set in presets
       // eslint-disable-next-line no-unused-vars
-      return Object.fromEntries(Object.entries(typesenseSearchParams).filter(function (_ref2) {
-        var _ref3 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref2, 2),
-          _ = _ref3[0],
-          v = _ref3[1];
+      return Object.fromEntries(Object.entries(typesenseSearchParams).filter(function (_ref4) {
+        var _ref5 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_ref4, 2),
+          _ = _ref5[0],
+          v = _ref5[1];
         return v != null && v !== "";
       }));
     }
@@ -665,17 +660,17 @@ var SearchRequestAdapter = /*#__PURE__*/function () {
   }, {
     key: "request",
     value: function () {
-      var _request = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_5___default().mark(function _callee() {
-        var _this4 = this,
+      var _request = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_6___default().mark(function _callee() {
+        var _this5 = this,
           _searches$,
           _searches$2;
         var searches, commonParams, _searches$3, q, conversation, conversation_id, conversation_model_id;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_5___default().wrap(function _callee$(_context) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_6___default().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               // console.log(this.instantsearchRequests);
               searches = this.instantsearchRequests.map(function (instantsearchRequest) {
-                return _this4._buildSearchParameters(instantsearchRequest);
+                return _this5._buildSearchParameters(instantsearchRequest);
               }); // If this is a conversational search, then move conversation related params to query params
               commonParams = {};
               if (((_searches$ = searches[0]) === null || _searches$ === void 0 ? void 0 : _searches$.conversation) === true || ((_searches$2 = searches[0]) === null || _searches$2 === void 0 ? void 0 : _searches$2.conversation) === "true") {
