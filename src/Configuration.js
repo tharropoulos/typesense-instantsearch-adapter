@@ -31,6 +31,10 @@ export class Configuration {
       this.additionalSearchParameters.highlight_full_fields ??
       this.additionalSearchParameters.query_by;
 
+    Object.entries(this.additionalSearchParameters).forEach(([key, value]) =>
+      Array.isArray(value) ? (this.additionalSearchParameters[key] = value.join(",")) : value,
+    );
+
     this.geoLocationField = options.geoLocationField ?? "_geoloc";
     this.facetableFieldsWithSpecialCharacters = options.facetableFieldsWithSpecialCharacters ?? [];
 
@@ -47,8 +51,6 @@ export class Configuration {
         this.additionalSearchParameters.highlight_full_fields ??
         params.query_by;
 
-      // Remove undefined values
-      Object.keys(params).map((key) => (Array.isArray(params[key]) ? params[key].join(",") : params[key]));
       Object.keys(params).forEach((key) => (params[key] === undefined ? delete params[key] : {}));
     });
 

@@ -13,7 +13,7 @@ describe("Configuration", () => {
       it("does not throw an error if query_by is set in additionalSearchParameters", () => {
         const subject = new Configuration({
           additionalSearchParameters: {
-            query_by: "name",
+            query_by: ["name", "title"],
           },
         });
 
