@@ -48,6 +48,7 @@ export class Configuration {
         params.query_by;
 
       // Remove undefined values
+      Object.keys(params).map((key) => (Array.isArray(params[key]) ? params[key].join(",") : params[key]));
       Object.keys(params).forEach((key) => (params[key] === undefined ? delete params[key] : {}));
     });
 
