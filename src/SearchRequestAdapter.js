@@ -413,6 +413,7 @@ export class SearchRequestAdapter {
     Object.assign(typesenseSearchParams, {
       collection: adaptedCollectionName,
       q: params.query === "" || params.query === undefined ? "*" : params.query,
+      query_by: snakeCasedAdditionalSearchParameters.query_by,
       facet_by:
         snakeCasedAdditionalSearchParameters.facet_by || this._adaptFacetBy(params.facets, adaptedCollectionName),
       filter_by: this._adaptFilters(params, adaptedCollectionName) || snakeCasedAdditionalSearchParameters.filter_by,
