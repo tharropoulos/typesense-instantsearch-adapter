@@ -1,5 +1,7 @@
+import beforeAllSetup from "./support/beforeAll.js";
+
 describe("Geo Search - List View", () => {
-  beforeAll(require("./support/beforeAll"), 60 * 1000);
+  beforeAll(beforeAllSetup, 60 * 1000);
 
   describe("aroundLatLng via configure widget", () => {
     it("renders results within a within the specified radius around lat lng", async () => {

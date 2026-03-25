@@ -1,6 +1,10 @@
-const Typesense = require("typesense");
+import Typesense from "typesense";
+import fs from "node:fs";
+import path from "node:path";
 
-module.exports = (async () => {
+const recipes = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), "test/support/data/recipes.json"), "utf8"));
+
+export default async function populateRecipesIndex() {
   // Create a client
   const typesense = new Typesense.Client({
     nodes: [
@@ -35,8 +39,6 @@ module.exports = (async () => {
   };
 
   console.log("Populating index in Typesense");
-
-  const recipes = require("./data/recipes.json");
 
   let reindexNeeded = false;
   try {
@@ -82,4 +84,4 @@ module.exports = (async () => {
   } catch (error) {
     console.log(error);
   }
-})();
+}

@@ -1,5 +1,7 @@
+import beforeAllSetup from "./support/beforeAll.js";
+
 describe("Negative Faceting", () => {
-  beforeAll(require("./support/beforeAll"), 60 * 1000);
+  beforeAll(beforeAllSetup, 60 * 1000);
 
   describe("for a single value", () => {
     beforeEach(async () => {

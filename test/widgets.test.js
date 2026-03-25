@@ -1,5 +1,7 @@
+import beforeAllSetup from "./support/beforeAll.js";
+
 describe("Instant Search Widgets", () => {
-  beforeAll(require("./support/beforeAll"), 60 * 1000);
+  beforeAll(beforeAllSetup, 60 * 1000);
 
   beforeEach(async () => {
     return page.goto("http://localhost:3000/index.html");
@@ -154,7 +156,7 @@ describe("Instant Search Widgets", () => {
   });
 
   describe("queryRuleCustomData", () => {
-    beforeAll(require("./support/beforeAll"));
+    beforeAll(beforeAllSetup);
     beforeEach(async () => {
       return page.goto("http://localhost:3000/index.html");
     });
@@ -175,7 +177,7 @@ describe("Instant Search Widgets", () => {
   });
 
   describe("queryRuleContext", () => {
-    beforeAll(require("./support/beforeAll"));
+    beforeAll(beforeAllSetup);
     beforeEach(async () => {
       return page.goto("http://localhost:3000/index.html");
     });

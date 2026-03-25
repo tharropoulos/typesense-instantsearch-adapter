@@ -1,6 +1,10 @@
-const Typesense = require("typesense");
+import Typesense from "typesense";
+import fs from "node:fs";
+import path from "node:path";
 
-module.exports = (async () => {
+const brands = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), "test/support/data/brands.json"), "utf8"));
+
+export default async function populateBrandsIndex() {
   // Create a client
   const typesense = new Typesense.Client({
     nodes: [
@@ -31,8 +35,6 @@ module.exports = (async () => {
   };
 
   console.log("Populating brands index in Typesense");
-
-  const brands = require("./data/brands.json");
 
   brands.forEach((brand) => {
     brand.popularity = brand.name.length;
@@ -82,4 +84,4 @@ module.exports = (async () => {
   } catch (error) {
     console.log(error);
   }
-})();
+}

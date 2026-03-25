@@ -1,9 +1,13 @@
 // This script can also be executed from the command line directly:
 // $ node populateTypesenseIndex.js
 
-const Typesense = require("typesense");
+import Typesense from "typesense";
+import fs from "node:fs";
+import path from "node:path";
 
-module.exports = (async () => {
+const airports = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), "test/support/data/airports.json"), "utf8"));
+
+export default async function populateAirportsIndex() {
   // Create a client
   const typesense = new Typesense.Client({
     nodes: [
@@ -51,8 +55,6 @@ module.exports = (async () => {
   };
 
   console.log("Populating airports index in Typesense");
-
-  const airports = require("./data/airports.json");
 
   let reindexNeeded = false;
   try {
@@ -105,4 +107,4 @@ module.exports = (async () => {
     console.log(error);
     throw error;
   }
-})();
+}

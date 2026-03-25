@@ -1,5 +1,7 @@
+import beforeAllSetup from "./support/beforeAll.js";
+
 describe("InstantSearch Dynamic Widgets", () => {
-  beforeAll(require("./support/beforeAll"), 60 * 1000);
+  beforeAll(beforeAllSetup, 60 * 1000);
 
   beforeEach(async () => {
     return page.goto("http://localhost:3000/dynamic_widgets.html");

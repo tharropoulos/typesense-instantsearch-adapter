@@ -1,6 +1,10 @@
 import { setDefaultOptions } from "expect-puppeteer";
+import populateProductsIndex from "./populateProductsIndex.js";
+import populateBrandsIndex from "./populateBrandsIndex.js";
+import populateRecipesIndex from "./populateRecipesIndex.js";
+import populateAirportsIndex from "./populateAirportsIndex.js";
 
-module.exports = async () => {
+export default async function beforeAllSetup() {
   setDefaultOptions({ timeout: 30000 });
   jest.setTimeout(30000);
 
@@ -29,8 +33,8 @@ module.exports = async () => {
       }
     });
 
-  await require("./populateProductsIndex");
-  await require("./populateBrandsIndex");
-  await require("./populateRecipesIndex");
-  return require("./populateAirportsIndex");
-};
+  await populateProductsIndex();
+  await populateBrandsIndex();
+  await populateRecipesIndex();
+  return populateAirportsIndex();
+}
