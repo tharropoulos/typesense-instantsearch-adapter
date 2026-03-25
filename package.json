@@ -1,10 +1,26 @@
 {
   "name": "typesense-instantsearch-adapter",
   "version": "3.0.3-1",
+  "type": "module",
   "description": "Adapter to use InstantSearch UI widgets with Typesense Search",
   "homepage": "https://github.com/typesense/typesense-instantsearch-adapter",
-  "main": "lib/TypesenseInstantsearchAdapter.js",
+  "main": "lib/TypesenseInstantsearchAdapter.cjs",
+  "module": "lib/TypesenseInstantsearchAdapter.js",
   "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./lib/TypesenseInstantsearchAdapter.js",
+      "require": "./lib/TypesenseInstantsearchAdapter.cjs",
+      "default": "./lib/TypesenseInstantsearchAdapter.js"
+    },
+    "./dist/*": "./dist/*",
+    "./lib/*": "./lib/*",
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "unpkg": "dist/typesense-instantsearch-adapter.min.js",
+  "jsdelivr": "dist/typesense-instantsearch-adapter.min.js",
   "files": [
     "dist/",
     "lib/",
@@ -31,12 +47,12 @@
   ],
   "scripts": {
     "pretest": "npm run lint && npm run test:type",
-    "postinstall": "node scripts/postinstall.js",
+    "postinstall": "node scripts/postinstall.cjs",
     "prepublishOnly": "npm run build",
     "lint": "eslint --fix . && prettier --write .",
     "test": "jest --maxWorkers=1 --verbose",
-    "build:lib": "babel src -d lib --source-maps",
-    "build:dist": "webpack",
+    "build:lib": "rm -rf lib && babel src -d lib --source-maps && webpack --config webpack.config.cjs --config-name node-cjs",
+    "build:dist": "rm -rf dist && webpack --config webpack.config.cjs --config-name browser-min --config-name browser-dev",
     "test:type": "tsd",
     "build": "npm run build:lib && npm run build:dist",
     "typesenseServer": "docker run -i -p 8108:8108 -v`pwd`/typesense-server-data/:/data typesense/typesense:30.0 --data-dir /data --api-key=xyz --listen-port 8108 --enable-cors",
